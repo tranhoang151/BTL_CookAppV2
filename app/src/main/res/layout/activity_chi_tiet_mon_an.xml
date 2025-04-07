@@ -87,7 +87,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnthemthucdon"
+        android:id="@+id/btnBookmark"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/them_cong_thuc_vao_thuc_don_hang_ngay"

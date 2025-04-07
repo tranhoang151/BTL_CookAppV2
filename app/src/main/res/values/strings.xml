@@ -36,4 +36,6 @@
     <string name="ban_da_chon">Bạn Đã Chọn</string>
     <string name="bai_dang_cua_toi">Bài Đăng Của Tôi</string>
     <string name="them_cong_thuc_vao_thuc_don_hang_ngay">Thêm công thức vào thực đơn</string>
+
+    <string name="bookmark_recipe">Thêm vào danh sách yêu thích</string>
 </resources>

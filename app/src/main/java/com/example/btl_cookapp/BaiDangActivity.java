@@ -17,10 +17,15 @@ public class BaiDangActivity extends AppCompatActivity {
     private MonAnDAO DB;
     ListView listView;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai_dang);
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        // Get username from intent
+        Intent intent = getIntent();
+        final String username = intent.getStringExtra("username");
 
         listView = findViewById(R.id.listviewbaidang);
         mylist = new ArrayList<>();
@@ -32,23 +37,27 @@ public class BaiDangActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentct = new Intent(BaiDangActivity.this, ChiTietMonAnActivity.class);
-                //Lấy dữ liệu
-                String cttenmon = mylist.get(position).getTenMonAn().toString();
-                String ctcongthuc = mylist.get(position).getCongThuc().toString();
-                String ctuser = mylist.get(position).getUser().toString();
+                // Lấy dữ liệu
+                String cttenmon = mylist.get(position).getTenMonAn();
+                String ctcongthuc = mylist.get(position).getCongThuc();
+                String ctuser = mylist.get(position).getUser();
                 byte[] ctanh = mylist.get(position).getImage();
-                //Trước khi đưa vào intent chúng ta đóng gói dữ liệu vào bundle
+                int monanId = mylist.get(position).getID();
+
+                // Đưa dữ liệu vào bundle
                 Bundle mybundle = new Bundle();
-                //Đưa dũ liệu vào bundle
                 mybundle.putString("tenmonan", cttenmon);
                 mybundle.putString("congthuc", ctcongthuc);
                 mybundle.putString("user", ctuser);
                 mybundle.putByteArray("anh", ctanh);
-                //Đưa bundle vào intent
-                intentct.putExtra("package", mybundle);
-                //Khởi động intent
-                startActivity(intentct);
+                mybundle.putInt("id", monanId);
 
+                // Đưa bundle vào intent
+                intentct.putExtra("package", mybundle);
+                intentct.putExtra("username", username);
+
+                // Khởi động intent
+                startActivity(intentct);
             }
         });
     }

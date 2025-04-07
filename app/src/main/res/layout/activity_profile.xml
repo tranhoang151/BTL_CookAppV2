@@ -56,6 +56,18 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnbookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Công thức yêu thích"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
     <Button
         android:id="@+id/btnbacktc"
         android:layout_width="match_parent"
