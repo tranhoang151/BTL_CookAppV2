@@ -100,24 +100,6 @@ public class ChiTietMonAnActivity extends AppCompatActivity {
                 }
             }
         });
-
-        buttonThemThucDon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                long calID = getCalendarId(ChiTietMonAnActivity.this);
-                if (calID == -1) {
-                    Toast.makeText(ChiTietMonAnActivity.this, "Không tìm thấy lịch", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ContentValues values = new ContentValues();
-                values.put(CalendarContract.Events.DTSTART, System.currentTimeMillis() + 3600000);
-                values.put(CalendarContract.Events.DTEND, System.currentTimeMillis() + 7200000);
-                values.put(CalendarContract.Events.TITLE, "Cuộc họp quan trọng");
-                values.put(CalendarContract.Events.DESCRIPTION, "Ghi chú: Đừng quên mang tài liệu");
-                values.put(CalendarContract.Events.CALENDAR_ID, calID);
-                values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
-            }
-        });
     }
 
     private void updateBookmarkButtonText() {
