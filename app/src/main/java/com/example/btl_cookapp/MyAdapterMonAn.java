@@ -107,6 +107,8 @@ public class MyAdapterMonAn extends BaseAdapter implements Filterable{
         txt_tenmonan.setText(myMonAn.tenMonAn);
         TextView txt_user=convertView.findViewById(R.id.txtuser);
         txt_user.setText(myMonAn.user);
+        TextView txt_type = convertView.findViewById(R.id.txttype);
+        txt_type.setText(myMonAn.getType().toString());
         return convertView;
     }
 

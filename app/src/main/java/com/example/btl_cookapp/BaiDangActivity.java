@@ -61,9 +61,10 @@ public class BaiDangActivity extends AppCompatActivity {
             }
         });
     }
-    private  void readData(){
+    private void readData(){
+        Intent intent = getIntent();
         mylist.clear();
-        mylist.addAll(DB.getAllData());
+        mylist.addAll(DB.getData(intent.getStringExtra("username")));
         myAdapterMonAn.notifyDataSetChanged();
     }
 }

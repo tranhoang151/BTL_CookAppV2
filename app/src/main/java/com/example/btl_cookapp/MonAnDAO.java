@@ -109,4 +109,29 @@ public class MonAnDAO {
 
         return ketqua > 0;
     }
+
+    public ArrayList<MonAn> getData(String user) {
+        ArrayList<MonAn> list = new ArrayList<>();
+        Cursor cursor = database.query(DBHelperMonAn.TABLE_MON_AN, null,
+                DBHelperMonAn.COLUMN_USER + " = ?",
+                new String[]{ user }
+                , null,
+                null,
+                "tenMonAn ASC");
+        if (cursor.moveToFirst()) {
+            do {
+                MonAn monAn = new MonAn(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_CONG_THUC)),
+                        cursor.getBlob(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_ANH)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_USER)),
+                        TypeMonAn.getTypeByValue(cursor.getInt(cursor.getColumnIndexOrThrow(DBHelperMonAn.COLUMN_TYPE)))
+                );
+                list.add(monAn);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
 }
